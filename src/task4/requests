@@ -1,0 +1,12 @@
+SELECT account.account_id,
+        customer.customer_id,
+        account.avail_balance FROM account
+        INNER JOIN customer ON account.cust_id = customer.cust_id
+        WHERE account.status = 'ACTIVE' AND account.avail_balance > 1000;
+
+
+SELECT account.account_id, customer.cust_id, product.name
+    FROM ((account
+    INNER JOIN customer ON account.cust_id = customer.cust_id)
+    INNER JOIN product ON product.product_cd = account.product_cd)
+    WHERE customer_cust_type_cd = 'I';
